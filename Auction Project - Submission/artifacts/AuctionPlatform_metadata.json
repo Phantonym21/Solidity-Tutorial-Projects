@@ -1,0 +1,112 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "auctionList",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "auctionOwners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint32",
+						"name": "_startTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "_endTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minBidValue",
+						"type": "uint256"
+					}
+				],
+				"name": "createAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Auction Project - Submission/AuctionPlatform.sol": "AuctionPlatform"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Auction Project - Submission/AuctionPlatform.sol": {
+			"keccak256": "0x04326a45e02af62fc9b9c3a699ba8d0e5eef88e9ef5732e96ccdd7e941dd5617",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0eeea984e3f8c634c829e16809fe94979fdb224466e029a7e21cc4387d792329",
+				"dweb:/ipfs/QmfYZNZrGZhMHSuSpihStUYFcwN49yWURZoPAMN2aWqb6t"
+			]
+		}
+	},
+	"version": 1
+}
