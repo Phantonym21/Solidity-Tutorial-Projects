@@ -7,6 +7,8 @@ pragma solidity ^0.8.0;
 contract Tutorial3{
 
     uint256 A;
+    uint256 C;
+    
     
 
 
