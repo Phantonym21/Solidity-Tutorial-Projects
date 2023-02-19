@@ -1,0 +1,198 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "aucId",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getMaxBid",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_aucId",
+						"type": "uint256"
+					},
+					{
+						"name": "_bidVal",
+						"type": "uint256"
+					}
+				],
+				"name": "bidOnAuction",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "bid",
+						"type": "uint256"
+					}
+				],
+				"name": "endAuction",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getListOfOwnBids",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"name": "_startTimeYear",
+						"type": "uint256"
+					},
+					{
+						"name": "_startTimeMonth",
+						"type": "uint256"
+					},
+					{
+						"name": "_startTimeDay",
+						"type": "uint256"
+					},
+					{
+						"name": "_endTimeYear",
+						"type": "uint256"
+					},
+					{
+						"name": "_endTimeMonth",
+						"type": "uint256"
+					},
+					{
+						"name": "_endTimeDay",
+						"type": "uint256"
+					},
+					{
+						"name": "_minBidVal",
+						"type": "uint256"
+					}
+				],
+				"name": "createAuction",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getListOfBidsOnAuction",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "endAuction",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Auction Project/AuctionPlatform.sol": "AuctionPlatform"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Auction Project/Auction2.sol": {
+			"keccak256": "0xc1ff65ed829edcb121c19708993267f63cfa7cf7fd24bebcda9409b12d86a79b",
+			"urls": [
+				"bzzr://ce2a173876adc5bede46fefc58ded2d0b56f1a9460eb914cae64411a127cace9"
+			]
+		},
+		"Auction Project/AuctionPlatform.sol": {
+			"keccak256": "0xb33e1ba2eeff5db225f45635744cda092a2835fd5d04116db0085f064aa53c58",
+			"urls": [
+				"bzzr://4d85d684958100f2d7594e2b1d4803f1f55a4dc422d3cbc7a6fc5ba72e85aa8e"
+			]
+		},
+		"https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol": {
+			"keccak256": "0x1a9201384f92177e9cf346bf6cc75ae47efe6043f0cba4eded4b2a38943c798d",
+			"urls": [
+				"bzzr://bd3e307cedf8a989f4648fa3bacb71e1b2d7022f974d1c2c0a83fa31ee6665ad"
+			]
+		}
+	},
+	"version": 1
+}

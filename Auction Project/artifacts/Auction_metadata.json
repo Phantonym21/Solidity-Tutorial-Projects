@@ -1,106 +1,150 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.4.26+commit.4563c3fc"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_nameOfItem",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_startingBid",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "bidList",
+				"constant": true,
+				"inputs": [],
+				"name": "getBidsMade",
 				"outputs": [
 					{
-						"internalType": "uint256",
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
+				"constant": true,
 				"inputs": [],
-				"name": "closeBid",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "getEndTime",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "controlBid",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
+				"constant": false,
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_amount",
+						"name": "_bidVal",
 						"type": "uint256"
 					}
 				],
 				"name": "createBid",
 				"outputs": [],
-				"stateMutability": "payable",
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getListOfBids",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getMinBidVal",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getMaximumBid",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "bid",
+						"type": "uint256"
+					}
+				],
+				"name": "endAuctionWithSelectedBid",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_amount",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"name": "_startTime",
+						"type": "uint256"
+					},
+					{
+						"name": "_endTime",
+						"type": "uint256"
+					},
+					{
+						"name": "_minBidVal",
 						"type": "uint256"
 					}
 				],
-				"name": "updateBid",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"Auction Project/Auction.sol": "Auction"
+			"Auction Project/Auction2.sol": "Auction"
 		},
-		"evmVersion": "london",
+		"evmVersion": "byzantium",
 		"libraries": {},
-		"metadata": {
-			"bytecodeHash": "ipfs"
-		},
 		"optimizer": {
 			"enabled": false,
 			"runs": 200
@@ -108,12 +152,10 @@
 		"remappings": []
 	},
 	"sources": {
-		"Auction Project/Auction.sol": {
-			"keccak256": "0x3e5d359ecb44cb30622cd229f7a4afd315f9513dbd1f64c518a1c7fd87c01117",
-			"license": "UNLICENSED",
+		"Auction Project/Auction2.sol": {
+			"keccak256": "0xc1ff65ed829edcb121c19708993267f63cfa7cf7fd24bebcda9409b12d86a79b",
 			"urls": [
-				"bzz-raw://9edba53a2688a469b4880bb9fc3c1566eec4ddf18ee3764a679ece8c08e80dc2",
-				"dweb:/ipfs/QmPvr2Wb8rwTxgSTZhMqV5L9cVKR4e3TJXadzkP3NhELqj"
+				"bzzr://ce2a173876adc5bede46fefc58ded2d0b56f1a9460eb914cae64411a127cace9"
 			]
 		}
 	},

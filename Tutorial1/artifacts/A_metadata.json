@@ -1,0 +1,117 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "a1",
+				"outputs": [
+					{
+						"name": "year",
+						"type": "uint256"
+					},
+					{
+						"name": "month",
+						"type": "uint256"
+					},
+					{
+						"name": "day",
+						"type": "uint256"
+					},
+					{
+						"name": "hour",
+						"type": "uint256"
+					},
+					{
+						"name": "min",
+						"type": "uint256"
+					},
+					{
+						"name": "sec",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"name": "year",
+								"type": "uint256"
+							},
+							{
+								"name": "month",
+								"type": "uint256"
+							},
+							{
+								"name": "day",
+								"type": "uint256"
+							},
+							{
+								"name": "hour",
+								"type": "uint256"
+							},
+							{
+								"name": "min",
+								"type": "uint256"
+							},
+							{
+								"name": "sec",
+								"type": "uint256"
+							}
+						],
+						"name": "a",
+						"type": "tuple"
+					}
+				],
+				"name": "test3",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Tutorial1/DateTimeTest.sol": "A"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Tutorial1/DateTimeTest.sol": {
+			"keccak256": "0xe0e0a51ae50932760ec6eb4f374c39c1790b7441eaeedf79508c6729cff0cdc8",
+			"urls": [
+				"bzzr://26205be1bfc8e683e0074e83fb54134a335fd2adc14fa05510bc2d73fd449290"
+			]
+		},
+		"https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol": {
+			"keccak256": "0x1a9201384f92177e9cf346bf6cc75ae47efe6043f0cba4eded4b2a38943c798d",
+			"urls": [
+				"bzzr://bd3e307cedf8a989f4648fa3bacb71e1b2d7022f974d1c2c0a83fa31ee6665ad"
+			]
+		}
+	},
+	"version": 1
+}

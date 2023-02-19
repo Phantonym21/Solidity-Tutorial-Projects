@@ -16,9 +16,29 @@
 				"name": "auctionList",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "auctionId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint32",
+						"name": "startTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "endTime",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minBidValue",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -38,6 +58,76 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkBiddedAuctions",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "auctionId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "uint32",
+								"name": "startTime",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "endTime",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "minBidValue",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct AuctionPlatform.Auction[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkBids",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "bidOwner",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "auctionId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct AuctionPlatform.Bid[]",
+						"name": "",
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -68,7 +158,25 @@
 				],
 				"name": "createAuction",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bidAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_aucId",
+						"type": "uint256"
+					}
+				],
+				"name": "createBid",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -100,11 +208,11 @@
 	},
 	"sources": {
 		"Auction Project - Submission/AuctionPlatform.sol": {
-			"keccak256": "0x04326a45e02af62fc9b9c3a699ba8d0e5eef88e9ef5732e96ccdd7e941dd5617",
+			"keccak256": "0x505044e4112e63c5af710e4fdea458baf74756bca80843bcc8e8b0acde4e0789",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0eeea984e3f8c634c829e16809fe94979fdb224466e029a7e21cc4387d792329",
-				"dweb:/ipfs/QmfYZNZrGZhMHSuSpihStUYFcwN49yWURZoPAMN2aWqb6t"
+				"bzz-raw://99fe7a8daa78bd5827281e9a9a529a49de75e9a8a50ef290a77513290c52da7d",
+				"dweb:/ipfs/QmeVCHBiQVcJPohMVW1NFbqBPTMSas9BRgbPqztfTjKYeB"
 			]
 		}
 	},
