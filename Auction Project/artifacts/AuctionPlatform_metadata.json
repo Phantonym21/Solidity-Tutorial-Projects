@@ -20,6 +20,43 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_aucId",
+						"type": "uint256"
+					},
+					{
+						"name": "_bidVal",
+						"type": "uint256"
+					}
+				],
+				"name": "updateBid",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_aucId",
+						"type": "uint256"
+					}
+				],
+				"name": "getMaxBid",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getMaxBid",
@@ -60,12 +97,7 @@
 					}
 				],
 				"name": "endAuction",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address"
-					}
-				],
+				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -209,6 +241,23 @@
 				],
 				"name": "biddedOnAuction",
 				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "_aucId",
+						"type": "uint256"
+					}
+				],
+				"name": "updatedBid",
+				"type": "event"
 			}
 		],
 		"devdoc": {
@@ -232,15 +281,15 @@
 	},
 	"sources": {
 		"Auction Project/Auction2.sol": {
-			"keccak256": "0x4ba71304053ac058113960c7d4df7af78a0946432ba5b950e94f35855b486ae4",
+			"keccak256": "0x36fe70ad6e3a25aa9670f69ebfaafafc1e745f856b160e9b42e8404d62ff6495",
 			"urls": [
-				"bzzr://4c7df20bcca4c71b699fe3e7a34add4c5c07a1539e832b51e7beb47bf1ca0c5a"
+				"bzzr://53dabbb4865b8aa52817445746434f73fc892ce98cf4bf0818d273003d20e264"
 			]
 		},
 		"Auction Project/AuctionPlatform.sol": {
-			"keccak256": "0x4eebd1f37c7890850a7f4b84768296ba1e1e3591d6e5da673a07fa5964378a00",
+			"keccak256": "0xf21569d1a9069f440bbaf8bae4d5080ff245411d62bda25fda73fbcfc58674a0",
 			"urls": [
-				"bzzr://90d2cd0d61666e0e2e11a64bbaae358216529fbba719989901eec715c6751891"
+				"bzzr://62e9fe56925e869a2bf90f9669d771e9bc430e8544f9d8ca3ab9c293355a9cf8"
 			]
 		},
 		"https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol": {
