@@ -1,6 +1,6 @@
+//SPDX-License-Identifier: MIT;
 pragma solidity ^0.4.24;
 
-//SPDX-License-Identifier: MIT;
 
 // importing BokkyPooBahsDateTime Library for converting Date to timestamp;
 import "https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol";
@@ -17,8 +17,99 @@ contract AuctionPlatform{
     mapping(address=>uint) aucOwners;       // address of Auction owners to aucId;
     mapping(address=>uint[]) bidOwners;     // address of Bidders mapped to aucIds;
 
-    
-    
+    // Event for logging that auction is created with the aucId by the address at the given time.
+    event auctionCreated(uint indexed _aucId, uint indexed _timeStamp,address from);   
+
+    // Event for logging that auction is ended with the given winner and its winning Bid.
+    event auctionEnded(address indexed _winner, uint indexed _winningBid);
+
+    // Event for logging that the given address has bidded on the auction with the given aucId.
+    event biddedOnAuction(address indexed from,uint indexed _aucId);
+
+    event updatedBid(address indexed from,uint indexed _aucId);
+
+
+
+     //  this function gives the list of bids with their amounts to the owner of the auction
+    function getListOfBidsOnAuction() public ifAuctionOwner isBidsMade view returns(uint[]){
+            
+        return auctionList[aucOwners[msg.sender]].getListOfBids();
+
+    }
+
+    // this function gives the list of bids bidded by the address owner on different auctions
+    function getListOfOwnBids() public ifBidded view returns(uint[]){
+
+        return bidOwners[msg.sender];
+
+    }
+
+    // this gives the maximum bid on the auction of the address owner
+    function getMaxBid() public ifAuctionOwner isBidsMade view returns(uint){
+
+        // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the 
+        // Auctino object through the auctionList. then the getMaximumBid function is called
+        return auctionList[aucOwners[msg.sender]].getMaximumBid();
+
+    }
+
+    function getMaxBid(uint _aucId) public isBidsMade view returns(uint){
+        return auctionList[_aucId].getMaximumBid();
+    }
+
+    // this function ends the auction by automatically selecting the maximum bid on the autction and returns the address of the winner
+    function endAuction() public ifAuctionOwner returns(address){
+
+        // same as line 46
+        uint maxBid = auctionList[aucOwners[msg.sender]].getMaximumBid();
+
+        // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the 
+        // Auctino object through the auctionList. then the endAuctionWithSelectedBid is called and the maxBid is passed to it as Argument
+        address winner = auctionList[aucOwners[msg.sender]].endAuctionWithSelectedBid(maxBid);
+
+        emit auctionEnded(winner,maxBid);
+
+        return winner;
+    }
+
+    // this function ends the auction by selecting the winner with the bid passed as argument to it. It emits the address of the winner with the bid
+    function endAuction(uint _bid) public ifAuctionOwner {
+
+        // same as 60 except the argument is bid except of maxBid
+        address winner = auctionList[aucOwners[msg.sender]].endAuctionWithSelectedBid(_bid);
+        emit auctionEnded(winner,_bid);
+        
+    }
+
+
+    // Function to Bid on auction takes aucId and Bid Value as arguments
+    function bidOnAuction(uint _aucId, uint _bidVal) public 
+    isRunning(_aucId)                                                 // modifier to check whether auction is active or not
+    {
+        
+        // checks bid value if is greater than minimum bid value specified by the auction owner
+        require(auctionList[_aucId].getMinBidVal() < _bidVal,"Bid value cannot be less than mininum bid value of auction");
+
+        require(aucOwners[msg.sender] !=_aucId,"Can't bid on own Auction");
+
+        // This line of code calls the createBid function of the Auction object by accessing it through given auction Id from auctionList array
+        auctionList[_aucId].createBid(_bidVal);
+
+        // appends the auction Id to the bids list of the person who called the function
+        bidOwners[msg.sender].push(_aucId);
+
+
+        emit biddedOnAuction(msg.sender,_aucId);
+
+    }
+
+    function updateBid(uint _aucId, uint _bidVal) public 
+    isRunning(_aucId){
+        auctionList[_aucId].updateBid(_bidVal); // calls the update Bid function which further checks other conditions;
+        emit updatedBid(msg.sender,_aucId);
+    }
+
+
     function createAuction(
 
     string memory _description,                                      /// description of the item being auctioned
@@ -29,13 +120,14 @@ contract AuctionPlatform{
     isAlreadyAuctionOwner                                            /// to check if the caller already owns an auction or not
         
     {
+        
 
 
         // Checking if the dates entered are valid to be passed to the DateTime Library for converstion    
         require(BokkyPooBahsDateTimeLibrary.isValidDateTime(_startTimeYear,_startTimeMonth,_startTimeDay,0,0,0),"Enter Valid Start Date");
         require(BokkyPooBahsDateTimeLibrary.isValidDateTime(_endTimeYear,_endTimeMonth,_endTimeDay,0,0,0),"Enter Valid End Date");
 
-        // Converting the dates to timestamps using BokkyPooBahsDateTime Library imported from github on line 5
+        // Converting the dates to timestamps using BokkyPooBahsDateTime Library imported from github on line 6
         uint start_time = BokkyPooBahsDateTimeLibrary.timestampFromDate(
             _startTimeYear,
             _startTimeMonth,
@@ -59,74 +151,13 @@ contract AuctionPlatform{
         auctionList[aucId] = TempA;                        // appending the Auction object at the end of auction array
         aucOwners[msg.sender] = aucId;                      // mapping the address of the caller to aucId so that owner can manage the auction later
 
-        /// EVENT
+        emit auctionCreated(aucId,block.timestamp,msg.sender);
 
     }
 
-    // Function to Bid on auction takes aucId and Bid Value as arguments
-    function bidOnAuction(uint _aucId, uint _bidVal) public 
-    isRunning(_aucId)                                                 // modifier to check whether auction is active or not
-    {
-        
-        // checks bid value if is greater than minimum bid value specified by the auction owner
-        require(auctionList[_aucId].getMinBidVal() < _bidVal,"Bid value cannot be less than mininum bid value of auction");
+    
 
-        // This line of code calls the createBid function of the Auction object by accessing it through givne auction Id from auctionList array
-        auctionList[_aucId].createBid(_bidVal);
-
-        // appends the auction Id to the bids list of the person who called the function
-        bidOwners[msg.sender].push(_aucId);
-
-
-        /// EVENT
-
-    }
-
-    //  this function gives the list of bids with their amounts to the owner of the auction
-    function getListOfBidsOnAuction() public ifAuctionOwner isBidsMade view returns(uint[]){
-            
-        return auctionList[aucOwners[msg.sender]].getListOfBids();
-
-    }
-
-    // this function gives the list of bids bidded by the address owner on different auctions
-    function getListOfOwnBids() public ifBidded view returns(uint[]){
-
-        return bidOwners[msg.sender];
-
-    }
-
-    // this gives the maximum bid on the auction of the address owner
-    function getMaxBid() public ifAuctionOwner ifBidded view returns(uint){
-
-        // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the 
-        // Auctino object through the auctionList. then the getMaximumBid function is called
-        return auctionList[aucOwners[msg.sender]].getMaximumBid();
-
-    }
-
-    // this function ends the auction by automatically selecting the maximum bid on the autction and returns the address of the winner
-    function endAuction() public ifAuctionOwner returns(address){
-
-        // same as line 104
-        uint maxBid = auctionList[aucOwners[msg.sender]].getMaximumBid();
-
-        // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the 
-        // Auctino object through the auctionList. then the endAuctionWithSelectedBid is called and the maxBid is passed to it as Argument
-        
-
-        return auctionList[aucOwners[msg.sender]].endAuctionWithSelectedBid(maxBid);
-
-    }
-
-    // this function ends the auction by selecting the winner with the bid passed as argument to it. It returns the address of the winner
-    function endAuction(uint bid) public ifAuctionOwner returns(address){
-
-        // same as 118 except the argument is bid except of maxBid
-        return auctionList[aucOwners[msg.sender]].endAuctionWithSelectedBid(bid);
-
-    }
-
+   
 
 
 

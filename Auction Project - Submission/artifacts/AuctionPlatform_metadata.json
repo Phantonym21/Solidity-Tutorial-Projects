@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -195,7 +195,7 @@
 		"compilationTarget": {
 			"Auction Project - Submission/AuctionPlatform.sol": "AuctionPlatform"
 		},
-		"evmVersion": "london",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -208,11 +208,11 @@
 	},
 	"sources": {
 		"Auction Project - Submission/AuctionPlatform.sol": {
-			"keccak256": "0x505044e4112e63c5af710e4fdea458baf74756bca80843bcc8e8b0acde4e0789",
+			"keccak256": "0x4da68b0c9708b8df957a9beba32149d756443c02f57364a155311b35e48923c7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://99fe7a8daa78bd5827281e9a9a529a49de75e9a8a50ef290a77513290c52da7d",
-				"dweb:/ipfs/QmeVCHBiQVcJPohMVW1NFbqBPTMSas9BRgbPqztfTjKYeB"
+				"bzz-raw://75ee2f4b592bc94d161ccd894ad8d0a668bb25e697933b6d2b45b7e4cdb1863b",
+				"dweb:/ipfs/QmPCH6An9LLNWveRmFbnFFFXYHL1qNefNCcW4hYbZ5sp6t"
 			]
 		}
 	},

@@ -78,9 +78,15 @@ contract Auction {
         
     }
 
+    // function to update the bid with the given value
+    function updateBid(uint _bidVal) external validBidVal(_bidVal) isActive {
+        require(bids[tx.origin]!=0,"You haven't created any bid, use createBid for creating one"); // check if the bidder has created a bid or not
+        bids[tx.origin] = _bidVal;
+    }
+
 
     // function to end the auction with the selected bid passed as argument below
-    function endAuctionWithSelectedBid(uint bid) external isActive returns(address){
+    function endAuctionWithSelectedBid(uint bid) external isActive isBidsMade returns(address){
         endTime = block.timestamp;                     // updating endTime so that contract doesn't remain active
         address winner;                                // initializing the address of the winning bidder
         for(uint i =0;i<biddersList.length;i++){        // for loop for checking the bids mapping using the biddersList array to check
@@ -89,6 +95,7 @@ contract Auction {
                 break;
             }
         }
+        require(winner!=address(0),"This bid has not been made");  // if bid entered is invalid
         return winner;
     }
 
@@ -127,6 +134,12 @@ contract Auction {
         _;
     }
 
+    // To check whether any bids are present before ending the auction
+    modifier isBidsMade(){
+        uint len = biddersList.length;
+        require(len>0,"Can't end as no bids have been made yet");
+        _;
+    }
 
 
 

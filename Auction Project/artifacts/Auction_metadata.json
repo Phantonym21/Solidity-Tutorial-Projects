@@ -20,6 +20,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_bidVal",
+						"type": "uint256"
+					}
+				],
+				"name": "updateBid",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getEndTime",
@@ -153,9 +167,9 @@
 	},
 	"sources": {
 		"Auction Project/Auction2.sol": {
-			"keccak256": "0x4ba71304053ac058113960c7d4df7af78a0946432ba5b950e94f35855b486ae4",
+			"keccak256": "0x36fe70ad6e3a25aa9670f69ebfaafafc1e745f856b160e9b42e8404d62ff6495",
 			"urls": [
-				"bzzr://4c7df20bcca4c71b699fe3e7a34add4c5c07a1539e832b51e7beb47bf1ca0c5a"
+				"bzzr://53dabbb4865b8aa52817445746434f73fc892ce98cf4bf0818d273003d20e264"
 			]
 		}
 	},

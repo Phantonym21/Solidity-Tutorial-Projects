@@ -433,6 +433,16 @@
 					{
 						"components": [
 							{
+								"internalType": "uint256",
+								"name": "listingId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
 								"internalType": "address",
 								"name": "owner",
 								"type": "address"
@@ -446,11 +456,6 @@
 								"internalType": "string",
 								"name": "description",
 								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
 							},
 							{
 								"internalType": "string",
@@ -652,11 +657,11 @@
 			]
 		},
 		"NFT Project 2.0/PaintingNFT.sol": {
-			"keccak256": "0x4d0d090b12688bba30746bb2a7cee6c08d2bfcd006c9a87688ba7fe52eb847ce",
+			"keccak256": "0x243738fda2ebcd63a7299a0a30efb3bf2aecd5f30175629c5e1ce4705d6113f0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e0d2e0478968faa26111f05bc58d58419ca0918af1ab9c3e81616edb52af754d",
-				"dweb:/ipfs/QmZtARvczR1mXLKCxz6CV9qRzQqfE3DGtZukMnB3R4ERQW"
+				"bzz-raw://711488a3e62a1bc7fd533bc47b3437b6236bd3dd3837cd5d45b0fb80145d7c67",
+				"dweb:/ipfs/QmNzQTnV5DJ6L8gbLjoUgMWVyeUEPDyB9WhAZ7GwZYpuFD"
 			]
 		}
 	},

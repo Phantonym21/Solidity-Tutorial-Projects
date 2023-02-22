@@ -115,14 +115,6 @@ contract AuctionPlatform{
     }
 
 
-
-
-
-
-
-
-
-
     // MODIFIERS
 
 
